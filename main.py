@@ -81,7 +81,7 @@ def main():
         elif action == "dynamic programming" or action == "dp":
             dp_knapsack()
         elif action == "brute force" or action == "bf":
-            brute_force()
+            brute_force(capacity, items)
         elif action == "exit":
             print("The program has ended.")
             break

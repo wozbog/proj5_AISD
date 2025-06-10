@@ -38,4 +38,6 @@ def brute_force(C, items):
             best_value = current_c
             best_comb = current_c
 
-    return best_value, best_comb
+    #return best_value, best_comb
+    print(f"Max value: {best_value}")
+    print(f"Selected items: {sorted(best_comb)}")
