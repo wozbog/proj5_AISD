@@ -28,5 +28,13 @@ def main():
         print(f"Invalid input: {e}")
         sys.exit(1) 
 
+
+    #Reset terminal
+    try:
+        sys.stdin = open('/dev/tty')
+    except Exception:
+        print("Error returning to terminal. (dev/tty).")
+        sys.exit(1)
+
 if __name__ == "__main__":
     main()
