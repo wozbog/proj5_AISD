@@ -1,5 +1,6 @@
 import sys
 import threading
+from operations import print_help, dp_knapsack, brute_force
 sys.setrecursionlimit(1000000000)
 
 def main():
@@ -64,6 +65,31 @@ def main():
     except Exception:
         print("Error returning to terminal. (dev/tty).")
         sys.exit(1)
+
+    #Commands and operations on knapsack
+    while True:
+        try:
+            action = input("action> ").strip().lower()
+        except EOFError:
+            print("\nThe program has ended (EOF). ")
+            break
+
+        if action == "help":
+            print_help()
+        elif action == "print":
+            print(f"Information about your knapsack: Capacity = {capacity}, Number of items = {n}, Items = {items}")
+        elif action == "dynamic programming" or action == "dp":
+            dp_knapsack()
+        elif action == "brute force" or action == "bf":
+            brute_force()
+        elif action == "exit":
+            print("The program has ended.")
+            break
+
+        else:
+            print(f"Unknown command: {action}\n")
+            print(f"Try one of these:")
+            print_help()
 
 if __name__ == "__main__":
     main()
