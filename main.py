@@ -79,7 +79,7 @@ def main():
         elif action == "print":
             print(f"Information about your knapsack: Capacity = {capacity}, Number of items = {n}, Items = {items}")
         elif action == "dynamic programming" or action == "dp":
-            dp_knapsack()
+            dp_knapsack(capacity, items)
         elif action == "brute force" or action == "bf":
             brute_force(capacity, items)
         elif action == "exit":

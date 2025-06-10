@@ -11,8 +11,27 @@ def print_help():
     print("---------------------------------------------------------------------------------------")
 
 #Dynamic Programming
-def dp_knapsack():
-    print("Dynamic programming")
+def dp_knapsack(C, items):
+    n = len(items)
+    dp = [[0] * (C + 1) for _ in range(n +1)]
+
+    for i in range(1, n+1):
+        p, w = items[i - 1]
+        for cap in range(C + 1):
+            if w <= cap:
+                dp[i][cap] = max(dp[i -1][cap], dp[i - 1][cap - w] + p)
+            else:
+                dp[i][cap] = dp[i - 1][cap]
+    
+    cap = C
+    selected = []
+    for i in range(n, 0, -1):
+        if dp[i][cap] != dp[i - 1][cap]:
+            selected.append(i)
+            cap -= items[i - 1][1]
+
+    print(f"Max value: {dp[n][C]}")
+    print(f"Selected items: {sorted(selected)}")
 
 def brute_force(C, items):
     n = len(items)
@@ -29,15 +48,14 @@ def brute_force(C, items):
                 p, w = items[j]
                 current_c += w
                 current_value += p
-                current_comb.append(j)
+                current_comb.append(j+1)
 
                 if current_c > C:
                     break
 
         if current_c <= C and current_value > best_value:
-            best_value = current_c
-            best_comb = current_c
+            best_value = current_value
+            best_comb = current_comb
 
-    #return best_value, best_comb
     print(f"Max value: {best_value}")
     print(f"Selected items: {sorted(best_comb)}")
