@@ -33,6 +33,7 @@ def dp_knapsack(C, items):
     print(f"Max value: {dp[n][C]}")
     print(f"Selected items: {sorted(selected)}")
 
+#Brute Force
 def brute_force(C, items):
     n = len(items)
     best_value = 0
